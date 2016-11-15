@@ -11,12 +11,10 @@ using System.Drawing;
 
 namespace openCv
 {
-    public class Filters
+    public static class Filters
     {
-	    public Filters()
-	    {
-        }
-	    static Mat ApplyCanny(Mat src, double threshold1 = 50, double threshold2 = 200)
+
+	    public static Mat ApplyCanny(Mat src, double threshold1 = 50, double threshold2 = 200)
         {
             
             if (threshold1 == 0) {
@@ -34,7 +32,7 @@ namespace openCv
             return dst;
         }
 
-        static Mat _1977(Mat src) {
+        public static Mat _1977(Mat src) {
             Mat dst = new Mat();
             //Cv2.AdaptiveThreshold(src.ExtractChannel(1), dst, 100, AdaptiveThresholdType.GaussianC, ThresholdType.BinaryInv, 3, 3);
             Cv2.Threshold(src.ExtractChannel(1), dst, 100,300,ThresholdType.ToZero);
@@ -42,7 +40,7 @@ namespace openCv
             return dst;
         }
 
-        static Mat ApplyGaussBlur(Mat src, OpenCvSharp.CPlusPlus.Size s)
+        public static Mat ApplyGaussBlur(Mat src, OpenCvSharp.CPlusPlus.Size s)
         {
             Mat dst = new Mat();
             if (s == null)
@@ -67,7 +65,7 @@ namespace openCv
             return dst;
         }
         //overload
-        static Mat ApplyGaussBlur(Mat src)
+        public static Mat ApplyGaussBlur(Mat src)
         {
             Mat dst = new Mat();
             if (src != null)
@@ -77,7 +75,7 @@ namespace openCv
             return dst;
         }
 
-        static Mat convertToGrayScale(Mat src)
+        public static Mat convertToGrayScale(Mat src)
         {
             Mat dest = new Mat();
             if (src != null)
@@ -87,7 +85,7 @@ namespace openCv
             return dest;
         }
 
-        static Mat ftr(Mat src) {
+        public static Mat ftr(Mat src) {
             var cm = redCm;
 
             var img = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(src) ;
@@ -104,7 +102,7 @@ namespace openCv
             return dst;
         }
 
-        static Mat Tint(Mat src,ColorMatrix colMat)
+        public static Mat Tint(Mat src,ColorMatrix colMat)
         {
             Mat dst = new Mat();
             if (colMat != null)
@@ -140,7 +138,7 @@ namespace openCv
             return dst;
         }
         //overload
-        static Mat Tint(Mat src)
+        public static Mat Tint(Mat src)
         {
             var cm = redCm;
 
@@ -169,7 +167,7 @@ namespace openCv
         //}
 
 
-        static ColorMatrix redCm = new ColorMatrix(new float[][]
+        public  static ColorMatrix redCm = new ColorMatrix(new float[][]
                 {
                     new float[] {1.3f, 0, 0, 0, 0},
                     new float[] {0, 1, 0, 0, 0},
@@ -177,7 +175,7 @@ namespace openCv
                     new float[] {0, 0, 0, 1, 0},
                     new float[] {0.3f, 0, 0, 0, 1}
                 });
-        static ColorMatrix greenCm = new ColorMatrix(new float[][]
+        public static ColorMatrix greenCm = new ColorMatrix(new float[][]
                 {
                     new float[] {1, 0, 0, 0, 0},
                     new float[] {0, 1.3f, 0, 0, 0},
@@ -185,7 +183,7 @@ namespace openCv
                     new float[] {0, 0, 0, 1, 0},
                     new float[] {0, 0.3f, 0, 0, 1}
                 });
-        static ColorMatrix blueCm = new ColorMatrix(new float[][]
+        public static ColorMatrix blueCm = new ColorMatrix(new float[][]
                 {
                     new float[] {1, 0, 0, 0, 0},
                     new float[] {0, 1, 0, 0, 0},
@@ -193,7 +191,7 @@ namespace openCv
                     new float[] {0, 0, 0, 1, 0},
                     new float[] {0, 0, 0.3f, 0, 1}
                 });
-        static ColorMatrix whiteCm = new ColorMatrix(new float[][]
+        public static ColorMatrix whiteCm = new ColorMatrix(new float[][]
                 {
                     new float[] {1, 0, 0, 0, 0},
                     new float[] {0, 1, 0, 0, 0},
